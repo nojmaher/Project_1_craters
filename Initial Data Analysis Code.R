@@ -1,7 +1,6 @@
 # Data Cleanup and load
 data = read.csv(file.choose())
 data.mod = data[,-c(2, 4, 6, 8)]
-data.extramod = data.mod
 
 library(ggplot2)
 
@@ -18,11 +17,11 @@ plot(mod, which = 2)
 
 # Histogram and QQ plot for diameter
 par(mfrow = c(1,1))
-density_plot <- ggplot(data = data.mod, aes(x = transformed_diameter)) +
+density_plot <- ggplot(data = data.mod, aes(x = Diameter)) +
   geom_histogram(aes(y = ..density..), colour = "black", fill = "white") +
   geom_density(colour = "blue") +
   stat_function(fun = dnorm,
-                args = list(mean = mean(data.mod$transformed_diameter), sd = sd(data.mod$transformed_diameter))) +
+                args = list(mean = mean(data.mod$Diameter), sd = sd(data.mod$Diameter))) +
   labs(x = "Diameter (km)", y = "Density",
        title = "Histogram and density estimates of Diameter")
 
