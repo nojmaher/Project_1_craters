@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[75]:
-
-
 #set up libraries and packages
 import numpy as np
 import seaborn as sns
@@ -20,19 +17,11 @@ from scipy.stats import beta
 import matplotlib.pyplot as plt
 import os
 
-
-# In[103]:
-
-
 #read in the data file
 #call data to show table
 data = pd.read_csv("simple_RheaData.csv")
 data = data.drop(columns = ['Sadness', 'BigSad', 'Pain', 'What even'])
 #Diameter and depth are those aspects of crater. d/D is depth/diameter. CWS is Crater Wall Slope
-
-
-# In[104]:
-
 
 #Making table of relevant info
 #call data_table (not print) to see a nicer table
@@ -40,20 +29,12 @@ stats_dict = {"Min":np.min(data.Diameter),"1st Quart":np.quantile(data.Diameter,
 data_table = pd.DataFrame(data=stats_dict, index=[0])
 print(data_table)
 
-
-# In[43]:
-
-
 #boxplot of diameter
 plt.boxplot(data.Diameter)
 plt.title("Boxplot of Diameter")
 plt.xlabel("Diameter")
 plt.ylabel("Km")
 plt.show()
-
-
-# In[101]:
-
 
 #Histogram with kde (blue) and normal distribution (red)
 ax = sns.histplot(data.Diameter,bins=30,binrange=[4,18.3],kde=True,stat="density")
@@ -63,18 +44,7 @@ ax.plot(x_pdf, y_pdf, 'r', lw=2, label='Normal')
 ax.legend()
 plt.show(ax)
 
-
-# In[102]:
-
-
 #QQ plot
 stats.probplot(data.Diameter,dist="norm",plot=pylab)
 pylab.title("QQ Plot for Diameter")
 pylab.show()
-
-
-# In[ ]:
-
-
-
-
