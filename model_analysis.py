@@ -106,7 +106,7 @@ plt.show()
     # Prior predictive check is to do what I just did above but with different a and b values 
     #to see if the shape matches the data any better
 m = 248 #number of sims
-a = 7.5  # Mean of the prior
+a = 10.5  # Mean of the prior
 b = 4.5  # Standard deviation of the prior
 
 priorpred_dat1 = np.zeros((m,1))
