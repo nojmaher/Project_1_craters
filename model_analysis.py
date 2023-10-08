@@ -68,8 +68,9 @@ value of D and a standard deviation given as 0.25D.
 
 #Prior
 x = np.linspace(0,25,1000)
-a = 9 #prior mean, middle of our data range, not robust
-b = 3 #prior variance, not robust
+a = 7.5 #prior mean, middle of our data range, not robust. 
+#I chose 7.5 because based on prior knowledge, the largest known simple craters studied are usually around 18 while the smallest are 3, so 7.5 falls right in the mean.
+b = 4.5 #prior variance, not robust. Just a variance from 7.5 to 13 or 7.5 to 3
 theta = stats.norm.pdf(x,a,b)
 prior = plt.plot(x, theta, 'black', lw=2, label='Normal')
 plt.show(prior)
