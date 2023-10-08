@@ -54,7 +54,7 @@ ax.legend()
 plt.show(ax)
 
 
-# In[5]:
+# In[89]:
 
 
 #Likelihood (distributed only with theta as mean and v as variance)
@@ -76,11 +76,11 @@ print('Posterior Mean = ',mu_p)
 print('Posterior Variance =',var_p)
 
 
-# In[83]:
+# In[90]:
 
 
 # Plot the prior
-a = 7.5  # Mean of the prior
+a = 10.5  # Mean of the prior
 b = 4.5  # Standard deviation of the prior
 
 # Generate the data to plot
@@ -99,7 +99,7 @@ plt.grid(True)
 plt.show()
 
 
-# In[84]:
+# In[102]:
 
 
 #Prior Predictive Check
@@ -113,11 +113,12 @@ priorpred_dat1 = np.zeros((m,1))
 # Calc PDF
 for i in range(m):
     theta = norm.rvs(a,b)
-    priorpred_dat1[i,0] = norm.rvs(theta,abs(0.25*theta))
+    priorpred_dat1[i,0] = norm.rvs(theta,v)
 
-plt1_title = str("a = "+str(a)+"; b = "+str(b))
+info1 = pd.Series(priorpred_dat1[:,0]).describe()
+plt1_title = str("a = "+str(a)+"; b = "+str(b)+"\n Mean = "+str(info1[1]))
 print("a = ",a,"; b = ",b) 
-print(pd.Series(priorpred_dat1[:,0]).describe())
+print(info1)
 #----------
 a = 1.0  # Mean of the prior
 b = 1.0  # Standard deviation of the prior
@@ -126,11 +127,12 @@ priorpred_dat2 = np.zeros((m,1))
 # Calc PDF
 for i in range(m):
     theta = norm.rvs(a,b)
-    priorpred_dat2[i,0] = norm.rvs(theta,abs(0.25*theta))
+    priorpred_dat2[i,0] = norm.rvs(theta,v)
 
-plt2_title = str("a = "+str(a)+"; b = "+str(b))    
+info2 = pd.Series(priorpred_dat2[:,0]).describe()
+plt2_title = str("a = "+str(a)+"; b = "+str(b)+"\n Mean = "+str(info2[1]))    
 print("\na = ",a,"; b = ",b)     
-print(pd.Series(priorpred_dat2[:,0]).describe())
+print(info2)
 #----------
 a = 5.0  # Mean of the prior
 b = 8.0  # Standard deviation of the prior
@@ -139,11 +141,12 @@ priorpred_dat3 = np.zeros((m,1))
 # Calc PDF
 for i in range(m):
     theta = norm.rvs(a,b)
-    priorpred_dat3[i,0] = norm.rvs(theta,abs(0.25*theta))
+    priorpred_dat3[i,0] = norm.rvs(theta,v)
 
-plt3_title = str("a = "+str(a)+"; b = "+str(b))
+info3 = pd.Series(priorpred_dat3[:,0]).describe()
+plt3_title = str("a = "+str(a)+"; b = "+str(b)+"\n Mean = "+str(info3[1]))
 print("\na = ",a,"; b = ",b)     
-print(pd.Series(priorpred_dat3[:,0]).describe())
+print(info3)
 #----------
 a = 12.0  # Mean of the prior
 b = 1.0  # Standard deviation of the prior
@@ -152,11 +155,12 @@ priorpred_dat4 = np.zeros((m,1))
 # Calc PDF
 for i in range(m):
     theta = norm.rvs(a,b)
-    priorpred_dat4[i,0] = norm.rvs(theta,abs(0.25*theta))
+    priorpred_dat4[i,0] = norm.rvs(theta,v)
 
-plt4_title = str("a = "+str(a)+"; b = "+str(b))
+info4 = pd.Series(priorpred_dat4[:,0]).describe()
+plt4_title = str("a = "+str(a)+"; b = "+str(b)+"\n Mean = "+str(info4[1]))
 print("\na = ",a,"; b = ",b) 
-print(pd.Series(priorpred_dat4[:,0]).describe())
+print(info4)
 #----------
 fig,ax = plt.subplots(figsize = (12,12),ncols = 2,nrows = 2)
 sns.histplot(data=priorpred_dat1, kde=False,ax = ax[0,0],bins=30)
